@@ -1,0 +1,197 @@
+:root {
+    --screen-size : 99vw;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+::-webkit-scrollbar {
+    display: none;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    min-height: 768px;
+    /* display: flex; */
+    /* justify-content: center; */
+    background:
+        url("/assets/etc/sp_top_bg.jpg")
+        center center / cover no-repeat fixed;
+    object-fit: contain;
+}
+
+#contents {
+    width: 440px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+#border {
+    width: 400px;
+    height: 400px;
+    background-color: transparent;
+    outline: 3px red solid;
+    position: relative;
+    display: flex;
+}
+/* 隠しているブロック */
+#block {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-wrap: wrap;
+    animation-fill-mode: forwards;
+}
+/* 100個のブロックのクラス */
+.block_children {
+    background-color :gray;
+    width : 40px;
+    height: 40px;
+    outline: 1px solid black;
+    outline-offset: -1px;
+}
+
+/* 画像のスタイル */
+#image {
+    width: 400px;
+    object-fit: cover;
+    overflow: hidden;   
+}
+
+/* ボタンのスタイル */
+button {
+    margin: 10px 0;
+    border: blue 1px solid ;
+    background-color: red;
+    color: white;
+    width: 120px;
+    height: 30px;
+    clip-path: polygon( 10px 0, 110px 0, 120px 5px, 120px 25px, 110px 30px, 10px 30px, 0 25px, 0 5px );
+    transition: .5s;
+}
+button:hover {
+    border: purple;
+    background-color: aqua;
+    color: black;
+}
+button:active {
+    scale: .85;
+}
+
+/* 回答用のボックス */
+.searchBox {
+    width: 400px;
+    height: 54px;
+    margin: 15px auto;
+    border-bottom: solid 1px #debd97;
+    background-color: rgba(255,255,255,.2);
+    color: white;
+}
+
+/* モーダル */
+#modal {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: flex-start;
+    background-color: rgba( 100, 100, 100, .5);
+    display: none;
+}
+/* キャラクター選択画面 */
+#charactors {
+    width: 400px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin: 0 auto;
+}
+.card {
+    width : 80px;
+    height: 80px;
+    background-size: 80px 80px;
+    cursor: pointer;
+}
+.card:hover {
+    background-color: azure;
+}
+
+.delete {
+    animation-name: delete;
+    animation-fill-mode: forwards;
+    animation-duration: 3s;
+    animation-timing-function: ease-out;
+}
+.delete_false {
+    animation-name: delete_false;
+    animation-fill-mode: forwards;
+    animation-duration: 3s;
+    animation-timing-function: ease-out;
+}
+
+/* キーフレーム */
+@keyframes delete {
+    0% {
+        outline: 1px solid white;
+        outline-offset: -1px;
+    }
+    50% {
+        outline: 3px solid blue;
+        outline-offset: -3px;
+        background-color: rgba(128, 128, 128, 1);
+    }
+    100% {
+        outline: none;
+        background-color: rgba(128, 128, 128, 0);
+    }
+}
+@keyframes delete_false {
+    0% {
+        outline: 1px solid white;
+        outline-offset: -1px;
+    }
+    50% {
+        outline: 3px solid blue;
+        outline-offset: -3px;
+        background-color: rgba(128, 128, 128, 1);
+    }
+    100% {
+        background-color :gray;
+        outline: 1px solid black;
+        outline-offset: -1px;
+    }
+}
+
+
+
+@media screen and ( max-width: 400px ) {
+    #border {
+        width: var(--screen-size);
+        height: var(--screen-size);
+    }
+    .block_children {
+        width: calc( var(--screen-size) / 10 );
+        height: calc( var(--screen-size) / 10 );
+    }
+    #charactors {
+        width: var(--screen-size);
+    }
+    .card {
+        width: calc( var(--screen-size) / 5 );
+        height: calc( var(--screen-size) / 5 );
+        background-size: calc( var(--screen-size) / 5 ) calc( var(--screen-size) / 5 );
+    }
+}

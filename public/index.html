@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>パネルDEストライク</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="contents">
+        <div id="border">
+            <img id="image" alt="パネルDEストライク">
+            <!-- ブロック配置用 -->
+            <div id="block"></div>
+        </div>
+        <div id="log"></div>
+        <button onclick="delete_block();">削除</button>
+        <button onclick="init();">初期化</button>
+
+        <input type="button" class="searchBox" value="選択">
+        <!-- キャラクター選択のモーダル -->
+    </div>
+    <div id="modal">
+        <div style="text-align: center; background-color: red; color: white; font-size: 2rem; margin: 0 auto; cursor: pointer;" onclick="modal.style.display='none';">CLOSE</div>
+        <div id="charactors"></div>
+    </div>
+
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
